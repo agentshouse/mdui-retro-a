@@ -13,6 +13,8 @@
     "prebuild": "node scripts/prepare-release.mjs",
     "release:check": "node scripts/check-release.mjs",
     "notices": "node scripts/generate-notices.mjs",
+    "starter:check": "node scripts/check-starter.mjs",
+    "verify": "npm run typecheck && npm run lint && npm test -- --maxWorkers=1 && npm run starter:check && node scripts/check-release.mjs --self-test && node scripts/check-release.mjs --source-only && npm run build && npm run release:check",
     "publish": "node publish.mjs"
   },
   "dependencies": {
@@ -46,5 +48,8 @@
     "vite": "^8.3.1",
     "vite-plugin-svgr": "^5.2.0",
     "vitest": "5.0.2"
+  },
+  "engines": {
+    "node": ">=24.21.0"
   }
 }

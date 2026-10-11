@@ -34,7 +34,7 @@ test('current JSON Schema keeps slot types, exact IDs and closed-object validati
 test('all original synthetic documents still validate without rewriting historical seed evidence', () => {
   const result = verify(readFileSync(new URL('../schema.yaml', import.meta.url), 'utf8'));
   if (result.verdict !== 'accept') throw new Error(JSON.stringify(result));
-  const original = JSON.parse(readFileSync(new URL('../scripts/seed-room-changes.json', import.meta.url), 'utf8')) as { changes: { path: string; content: string }[] };
+  const original = JSON.parse(readFileSync(new URL('./support/seed-room-changes.json', import.meta.url), 'utf8')) as { changes: { path: string; content: string }[] };
   const library = Object.fromEntries(original.changes.filter(change => !change.path.endsWith('/schema.yaml')).map(change => [change.path.replace('/rooms/retro-board-port/', ''), change.content]));
   assert.equal(Object.keys(library).length, 41);
   assert.deepEqual(validate(library, { binaryTargets: [] }, result.model), { verdict: 'accept' });

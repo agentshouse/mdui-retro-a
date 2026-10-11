@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/inovex/scrumlr.io",
+  "commit": "6bae213129563eea946ec58e7a38d068dc53e0c3",
+  "license": "MIT",
+  "source": "src/utils/test/dummy-board-data.json",
+  "source_sha256": "0d2dd0abcfff90f1ae36c52c1fbd1c3be0493e098cb49ee5b4a5e324aa9ed622",
+  "license_sha256": "f1b4596b72d00718594e7ce203acc973428912a1646b5f7b4175ae4f96581b44",
+  "counts": {
+    "boards": 1,
+    "columns": 2,
+    "notes": 4,
+    "historical_vote_total": 5
+  },
+  "transform": [
+    "Preserve all board/column/note IDs, text, order and stack relationships. Map legacy lean-lilac to the current supported value-violet palette; backlog-blue unchanged.",
+    "Add schema-only empty description/default unlocked and unedited flags. Add explicit dataset description.",
+    "Historical aggregated votes retained; no participant, author, voting-session or live-vote documents copied.",
+    "No images, remote assets, identity or model output. Source fixture is not imported by runtime."
+  ]
+}

@@ -1,23 +1,11 @@
-# Retro board
+# Retro Board
 
-A team retrospective: columns of notes that everyone adds to and votes on.
+A collaborative retrospective board with columns, notes, stacks, and votes stored as Room documents.
 
-An [agents.house](https://agents.house) Template: an App over one Room. `schema.yaml` is
-the Room's schema, `starter/` holds the documents a new Room starts with and `demo/` the
-documents of its demo Site.
+Use Node.js 24.21 or newer. Install with `npm ci --ignore-scripts --no-audit`, then run `npm run dev` for development or `npm run build` for a production build. `npm run verify` checks types, lint, tests, starter documents, licenses, source safety, and the release artifact.
 
-## Build
+`starter/` contains a small existing example board with its columns and notes at their original Room-relative paths. Starter documents are optional; the App never seeds a Room automatically.
 
-```sh
-npm ci
-npm run build
-```
+To publish, configure `origin` as the credential-free HTTPS Git URL of your House App, commit your changes on `main`, and run `npm run publish`. It verifies a clean source tree and atomically publishes source and a parentless release. Verify the published source revision in House afterward.
 
-## Publish
-
-Commit your change, then run `npm run publish`. It builds, then pushes `main` and the build,
-as one new commit without parents on `release`, to `origin`.
-
-## License
-
-See the license files beside this README.
+License texts and notices are retained in `LICENSE` and `public/licenses/`.
