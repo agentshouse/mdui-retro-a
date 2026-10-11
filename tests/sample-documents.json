@@ -1,0 +1,94 @@
+[
+  {
+    "type": "retro_board",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/board.md",
+    "fields": {
+      "id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "name": "Test Board",
+      "description": "Licensed donor export test board. Sample content and historical vote totals, not live participant activity.",
+      "isLocked": "false"
+    }
+  },
+  {
+    "type": "retro_column",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/columns/68559232-b70f-4db7-abae-da6f31206a31.md",
+    "fields": {
+      "id": "68559232-b70f-4db7-abae-da6f31206a31",
+      "board_id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "name": "Positive",
+      "description": "",
+      "color": "backlog-blue",
+      "index": 0,
+      "visible": "true"
+    }
+  },
+  {
+    "type": "retro_column",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/columns/9f43d504-351d-4afe-b248-93b03bd2f9dd.md",
+    "fields": {
+      "id": "9f43d504-351d-4afe-b248-93b03bd2f9dd",
+      "board_id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "name": "Negative",
+      "description": "",
+      "color": "value-violet",
+      "index": 1,
+      "visible": "true"
+    }
+  },
+  {
+    "type": "retro_note",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/24ceedf8-9c7b-4993-b021-06ef0d67ef80.md",
+    "fields": {
+      "id": "24ceedf8-9c7b-4993-b021-06ef0d67ef80",
+      "board_id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "text": "qwert",
+      "column_id": "68559232-b70f-4db7-abae-da6f31206a31",
+      "stack_id": "",
+      "rank": 0,
+      "edited": "false",
+      "votes": 2
+    }
+  },
+  {
+    "type": "retro_note",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/cd93b71b-d5df-404d-b34d-da5f03f29498.md",
+    "fields": {
+      "id": "cd93b71b-d5df-404d-b34d-da5f03f29498",
+      "board_id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "text": "asdf",
+      "column_id": "68559232-b70f-4db7-abae-da6f31206a31",
+      "stack_id": "24ceedf8-9c7b-4993-b021-06ef0d67ef80",
+      "rank": 0,
+      "edited": "false",
+      "votes": 1
+    }
+  },
+  {
+    "type": "retro_note",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/835929bf-0bf6-444d-b718-ac23568fb2d0.md",
+    "fields": {
+      "id": "835929bf-0bf6-444d-b718-ac23568fb2d0",
+      "board_id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "text": "poiuz",
+      "column_id": "9f43d504-351d-4afe-b248-93b03bd2f9dd",
+      "stack_id": "",
+      "rank": 1,
+      "edited": "false",
+      "votes": 0
+    }
+  },
+  {
+    "type": "retro_note",
+    "path": "retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/b2ed2bd1-e77f-4311-b4ae-c6279a8d90aa.md",
+    "fields": {
+      "id": "b2ed2bd1-e77f-4311-b4ae-c6279a8d90aa",
+      "board_id": "4af0854f-2cf1-4607-b1a6-6f96cd88a000",
+      "text": "asdf",
+      "column_id": "9f43d504-351d-4afe-b248-93b03bd2f9dd",
+      "stack_id": "",
+      "rank": 0,
+      "edited": "false",
+      "votes": 2
+    }
+  }
+]

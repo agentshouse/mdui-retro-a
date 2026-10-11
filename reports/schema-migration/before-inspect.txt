@@ -1,0 +1,9 @@
+ref: af_m1.k
+path: /rooms/retro-board-port/settings/schema.yaml
+revisions:
+  - revision: fr_m1.2.2
+    created_at: 2026-10-11T01:31:51.746193Z
+    author_user: 01a0e90c-531c-76df-85bf-d34caf05519c
+  - revision: fr_m1.1.0
+    created_at: 2026-10-11T00:37:44.113812Z
+    author_user: 01a0e90c-531c-76df-85bf-d34caf05519c

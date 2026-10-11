@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/settings/schema.yaml",
+      "base": "fr_m1.2.2",
+      "content": "# House JSON Schema (draft 2020-12). Unconstrained patterns keep identifiers,\n# dates and serialized scalar data exact-match without changing accepted values.\nretro_board:\n  properties:\n    id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    name:\n      type: string\n    description:\n      type: string\n    isLocked:\n      enum:\n      - 'true'\n      - 'false'\n  required:\n  - id\n  - name\n  - description\n  - isLocked\nretro_column:\n  properties:\n    id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    board_id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    name:\n      type: string\n    description:\n      type: string\n    color:\n      type: string\n      pattern: ^[\\s\\S]*$\n    index:\n      type: number\n    visible:\n      enum:\n      - 'true'\n      - 'false'\n  required:\n  - id\n  - board_id\n  - name\n  - description\n  - color\n  - index\n  - visible\nretro_note:\n  properties:\n    id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    board_id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    text:\n      type: string\n    column_id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    stack_id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    rank:\n      type: number\n    edited:\n      enum:\n      - 'true'\n      - 'false'\n    votes:\n      type: number\n  required:\n  - id\n  - board_id\n  - text\n  - column_id\n  - rank\n  - edited\n  - votes\nretro_vote:\n  properties:\n    id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    board_id:\n      type: string\n      pattern: ^[\\s\\S]*$\n    note_id:\n      type: string\n      pattern: ^[\\s\\S]*$\n  required:\n  - id\n  - board_id\n  - note_id\n"
+    }
+  ]
+}

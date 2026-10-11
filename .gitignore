@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
+tests/*.log
+tests/release-check.txt
+tests/seed-room-result.txt
+
+# Transient runtime-migration command output
+/reports/runtime-migration/*.log
+/reports/runtime-migration/*.err

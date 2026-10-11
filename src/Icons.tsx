@@ -1,0 +1,11 @@
+export {default as PlusIcon} from './assets/icons/plus.svg?react';
+export {default as CloseIcon} from './assets/icons/close.svg?react';
+export {default as EditIcon} from './assets/icons/edit.svg?react';
+export {default as ArrowLeftIcon} from './assets/icons/arrow-left.svg?react';
+export {default as ArrowRightIcon} from './assets/icons/arrow-right.svg?react';
+export {default as LockIcon} from './assets/icons/lock-closed.svg?react';
+export {default as UnlockIcon} from './assets/icons/lock-open.svg?react';
+export {default as SettingsIcon} from './assets/icons/three-dots.svg?react';
+export {default as ColumnsIcon} from './assets/icons/columns.svg?react';
+export {default as FileIcon} from './assets/icons/file-json.svg?react';
+export {default as TrashIcon} from './assets/icons/trash.svg?react';

@@ -1,0 +1,172 @@
+@use "constants/styles";
+
+$note-input__input-left: 20px;
+$note-input__input-right: 40px;
+$note-input__border-width: 2px;
+
+.note-input {
+  display: flex;
+  padding-inline: styles.$spacing--base;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 36px;
+  width: 100%;
+  position: relative;
+  margin-bottom: calc(styles.$spacing--base + styles.$spacing--xxs);
+  background-color: styles.$gray--300;
+  border-radius: styles.$rounded--medium;
+  transition: all 0.12s ease-in-out;
+  border: $note-input__border-width solid transparent;
+  container-type: inline-size;
+
+  &:not(:has(.note-input__input:disabled)):hover,
+  &:not(:has(.note-input__input:disabled)):focus-within {
+    border-color: rgba(var(--accent-color--light-rgb), 0.5);
+    box-shadow: 0 6px 9px 0 rgba(var(--accent-color--light-rgb), 0.16);
+  }
+}
+
+// the count sits below the input box, aligned to its right edge, within the gap left by the margin
+.note-input .character-count-indicator {
+  position: absolute;
+  top: calc(100% + styles.$spacing--xxs + $note-input__border-width);
+  right: styles.$spacing--xxs;
+  line-height: styles.$spacing--base;
+}
+
+.note-input__lock-icon {
+  width: styles.$icon--large;
+  height: styles.$icon--large;
+  color: styles.$gray--800;
+}
+
+.note-input__input {
+  color: styles.$navy--900;
+  font-weight: bold;
+  line-height: 24px;
+  max-height: 70vh;
+  letter-spacing: styles.$letter-spacing--small;
+  padding: styles.$spacing--xs 0;
+  font-family: Raleway, sans-serif;
+  background-color: transparent;
+  border: none;
+  width: calc(100% - #{$note-input__input-left} - #{$note-input__input-right});
+  outline: none;
+  resize: none;
+  font-size: styles.$text--xs;
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+@container (width > 280px) {
+  .note-input__input {
+    font-size: styles.$text-size--medium;
+  }
+}
+
+.note-input__add-button {
+  cursor: pointer;
+
+  &:hover > .note-input__icon--add {
+    filter: styles.$brighten--slightly;
+  }
+}
+
+.note-input__image-indicator,
+.note-input__add-button {
+  all: unset;
+  position: relative;
+  display: flex;
+  align-self: flex-start;
+  padding: styles.$spacing--xxs 0;
+  color: var(--chip-accent-color);
+
+  &:disabled {
+    color: styles.$gray--800;
+    cursor: default;
+  }
+}
+
+.note-input__icon--image,
+.note-input__icon--add {
+  width: styles.$icon--large;
+  height: styles.$icon--large;
+  color: var(--accent-color--600);
+  align-self: center;
+  transition: all 0.08s ease-out;
+}
+
+.note-input__icon--image {
+  margin: 0 styles.$spacing--xs styles.$spacing--xxs styles.$spacing--xs;
+  animation: fade-in 0.2s ease-in-out;
+}
+
+.note-input__icon--star {
+  position: absolute;
+  color: var(--accent-color--light);
+  animation: sparkle 1.5s ease-in-out infinite alternate;
+
+  &.star-1 {
+    transform: scale(0.35);
+    top: 2px;
+    left: -6px;
+  }
+
+  &.star-2 {
+    transform: scale(0.3);
+    top: -2px;
+    left: 10px;
+    animation-delay: 0.4s;
+  }
+
+  &.star-3 {
+    transform: scale(0.35);
+    bottom: -1px;
+    left: 9px;
+    animation-delay: 1.2s;
+  }
+}
+
+[data-theme="dark"] {
+  .note-input {
+    background-color: styles.$navy--400;
+
+    &:not(:has(.note-input__input:disabled)):hover,
+    &:not(:has(.note-input__input:disabled)):focus-within {
+      box-shadow: 0 6px 9px 0 styles.$navy--700;
+    }
+  }
+
+  .note-input__input {
+    color: styles.$gray--000;
+  }
+
+  .note-input__icon--add {
+    color: var(--accent-color--400);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 20%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

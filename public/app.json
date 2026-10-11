@@ -1,0 +1,15 @@
+{
+  "entry": "index.html",
+  "room_slots": [
+    {
+      "name": "retro",
+      "access": "write",
+      "types": [
+        "retro_board",
+        "retro_column",
+        "retro_note",
+        "retro_vote"
+      ]
+    }
+  ]
+}

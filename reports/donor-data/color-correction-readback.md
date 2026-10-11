@@ -1,0 +1,11 @@
+---
+type: retro_column
+id: "9f43d504-351d-4afe-b248-93b03bd2f9dd"
+board_id: "4af0854f-2cf1-4607-b1a6-6f96cd88a000"
+name: "Negative"
+description: ""
+color: value-violet
+index: 1
+visible: "true"
+---
+

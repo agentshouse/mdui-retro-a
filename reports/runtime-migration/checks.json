@@ -1,0 +1,75 @@
+{
+  "verifiedAt": "2026-10-11T10:10:33.779041+00:00",
+  "node": "v24.19.0",
+  "bridge": "0.1.0-ce524f6608238",
+  "scope": "Local tests/build/static release and network checks; no browser or hosted acceptance. No remote mutation.",
+  "checks": [
+    {
+      "check": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0
+    },
+    {
+      "check": "lint",
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "check": "test",
+      "command": "npm test",
+      "exitCode": 0
+    },
+    {
+      "check": "notices",
+      "command": "npm run notices",
+      "exitCode": 0
+    },
+    {
+      "check": "build",
+      "command": "npm run build",
+      "exitCode": 0
+    },
+    {
+      "check": "release-audit",
+      "command": "node scripts/check-release.mjs",
+      "exitCode": 0
+    },
+    {
+      "check": "audit-self-test",
+      "command": "node scripts/check-release.mjs --self-test",
+      "exitCode": 0
+    },
+    {
+      "check": "license-check",
+      "command": "node scripts/generate-notices.mjs --check",
+      "exitCode": 0
+    }
+  ],
+  "result": "passed",
+  "tests": {
+    "passed": 119,
+    "failed": 0,
+    "files": 9
+  },
+  "artifact": {
+    "files": 70,
+    "bytes": 1285353,
+    "fontFiles": 60,
+    "releaseDigest": "8dcf13898fba128fbabe3d36a19e82d5615915db3da90eeb01f3b8599980b2ec"
+  },
+  "bridgePackage": {
+    "name": "@agentshouse/app-bridge",
+    "version": "0.1.0-ce524f6608238",
+    "license": "MIT",
+    "licenseSha256": "ae43fe65ba384d99678a8c190b615e1e5c4fed6af04ef4df7b5bb51626de066b",
+    "directRuntimeDependency": false,
+    "transitiveRuntimeVersion": "0.1.0-cff8ba8fa2542"
+  },
+  "limitations": [
+    "No remote schema mutation; Tasks schema replacement defect remains a platform gate.",
+    "No App allocation, binding, release branch, push or publication.",
+    "No browser, screenshot, hosted CRUD, live sync or attachment acceptance.",
+    "Existing editor/identity/attachment limitations remain unchanged.",
+    "Node 24.19.0 is below the transitive runtime/model package floor 24.21.0; Master previously accepted local builds, not hosted compatibility."
+  ]
+}

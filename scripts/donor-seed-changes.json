@@ -1,0 +1,39 @@
+{
+  "changes": [
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/board.md",
+      "content": "---\ntype: retro_board\nid: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\nname: \"Test Board\"\ndescription: \"Licensed donor export test board. Sample content and historical vote totals, not live participant activity.\"\nisLocked: \"false\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/columns/68559232-b70f-4db7-abae-da6f31206a31.md",
+      "content": "---\ntype: retro_column\nid: \"68559232-b70f-4db7-abae-da6f31206a31\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\nname: \"Positive\"\ndescription: \"\"\ncolor: \"backlog-blue\"\nindex: 0\nvisible: \"true\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/columns/9f43d504-351d-4afe-b248-93b03bd2f9dd.md",
+      "content": "---\ntype: retro_column\nid: \"9f43d504-351d-4afe-b248-93b03bd2f9dd\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\nname: \"Negative\"\ndescription: \"\"\ncolor: \"value-violet\"\nindex: 1\nvisible: \"true\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/24ceedf8-9c7b-4993-b021-06ef0d67ef80.md",
+      "content": "---\ntype: retro_note\nid: \"24ceedf8-9c7b-4993-b021-06ef0d67ef80\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"qwert\"\ncolumn_id: \"68559232-b70f-4db7-abae-da6f31206a31\"\nstack_id: \"\"\nrank: 0\nedited: \"false\"\nvotes: 2\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/cd93b71b-d5df-404d-b34d-da5f03f29498.md",
+      "content": "---\ntype: retro_note\nid: \"cd93b71b-d5df-404d-b34d-da5f03f29498\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"asdf\"\ncolumn_id: \"68559232-b70f-4db7-abae-da6f31206a31\"\nstack_id: \"24ceedf8-9c7b-4993-b021-06ef0d67ef80\"\nrank: 0\nedited: \"false\"\nvotes: 1\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/835929bf-0bf6-444d-b718-ac23568fb2d0.md",
+      "content": "---\ntype: retro_note\nid: \"835929bf-0bf6-444d-b718-ac23568fb2d0\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"poiuz\"\ncolumn_id: \"9f43d504-351d-4afe-b248-93b03bd2f9dd\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/b2ed2bd1-e77f-4311-b4ae-c6279a8d90aa.md",
+      "content": "---\ntype: retro_note\nid: \"b2ed2bd1-e77f-4311-b4ae-c6279a8d90aa\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"asdf\"\ncolumn_id: \"9f43d504-351d-4afe-b248-93b03bd2f9dd\"\nstack_id: \"\"\nrank: 0\nedited: \"false\"\nvotes: 2\n---\n"
+    }
+  ]
+}

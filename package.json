@@ -1,0 +1,49 @@
+{
+  "name": "house-retro-board",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "lint": "eslint src/",
+    "prebuild": "node scripts/prepare-release.mjs",
+    "release:check": "node scripts/check-release.mjs",
+    "notices": "node scripts/generate-notices.mjs"
+  },
+  "dependencies": {
+    "@agentshouse/app-bridge": "0.1.0-ce524f6608238",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@fontsource/raleway": "^5.3.0",
+    "classnames": "^2.5.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@agentshouse/mdmodel": "0.1.0-c68e2039f1ca8",
+    "@eslint/js": "^9.39.5",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.71.1",
+    "@typescript-eslint/parser": "^8.71.1",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^17.13.0",
+    "happy-dom": "^20.14.5",
+    "sass": "^1.105.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.1",
+    "vite-plugin-svgr": "^5.2.0",
+    "vitest": "5.0.2"
+  }
+}

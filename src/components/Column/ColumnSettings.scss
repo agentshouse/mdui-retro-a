@@ -1,0 +1,5 @@
+@use "constants/styles";
+
+.column-settings {
+  z-index: styles.$column-header-z-index; // display over rest of column
+}

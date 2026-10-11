@@ -1,0 +1,296 @@
+@use "constants/styles";
+
+$note__indicator-height: 34px;
+$note__indicator-width: 3px;
+
+$note__author-image-size: 26px;
+
+$note__text-margin-top: 12px;
+$note__text-margin-top--small: 6px;
+
+$note__footer-height: 38px;
+$note__footer-gap: 42px;
+
+$note__text-lines: 3;
+$note__text-line-height: styles.$line-height--medium;
+
+.note__root {
+  position: relative;
+  container-type: inline-size;
+  container-name: note;
+}
+
+.note {
+  cursor: pointer;
+  position: relative;
+  border-radius: styles.$note__border-radius;
+  background-color: styles.$gray--000;
+  box-shadow:
+    0 4px 6px -1px rgba(styles.$blue--500, 0.1),
+    0 2px 4px -2px rgba(styles.$blue--500, 0.1);
+  transition: all 0.1s ease-in-out;
+  z-index: styles.$note-z-index;
+  padding: styles.$spacing--base styles.$spacing--lg 12px styles.$spacing--base;
+  width: 100%;
+  text-align: start;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+
+.note .note__user-avatar {
+  height: 28px;
+  width: 28px;
+  padding: 0;
+}
+
+.note__in-stack {
+  position: absolute;
+  width: calc(100% - 16px);
+  height: 100%;
+  top: 8px;
+  left: 8px;
+  opacity: 0.95;
+  border-radius: styles.$note__border-radius;
+  box-shadow:
+    0 4px 6px -1px rgba(styles.$blue--500, 0.1),
+    0 2px 4px -2px rgba(styles.$blue--500, 0.1);
+  background-color: styles.$gray--000;
+  z-index: styles.$note-z-index - styles.$base-z-index-step;
+  transition: all 0.1s ease-in-out;
+}
+
+.note:focus-within,
+.note:focus-visible {
+  outline: 2px solid rgba(var(--accent-color--light-rgb), 0.5);
+}
+
+.note:hover {
+  transform: scale(1.02);
+}
+
+.shouldCombine .note {
+  transform-origin: center;
+  border: 2px solid var(--accent-color--light);
+  border-radius: styles.$note__border-radius;
+
+  transform: scale(0.98);
+
+  ~ .note__in-stack {
+    transform: scale(0.98);
+  }
+
+  // re-active this to bring back the different stacking mode effects
+  /* &.note--stackOntop,
+  &.note--stackOntop ~ .note__in-stack {
+    transform: translatey(8px) scale(0.98);
+  }
+
+  &.note--stackBetween {
+    transform: translateY(-8px) scale(1.02);
+    z-index: $note-z-index + 2 * $base-z-index-step * 100;
+
+    & ~ .note__in-stack {
+      z-index: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+  } */
+
+  &.note--stackBelow {
+    transform: translateY(-8px) scale(1.02);
+    z-index: styles.$note-z-index + 2 * styles.$base-z-index-step;
+
+    & ~ .note__in-stack {
+      transform: translateY(-8px) scale(1.02);
+      z-index: styles.$note-z-index + styles.$base-z-index-step;
+    }
+  }
+}
+
+.note:focus-visible::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: $note__indicator-width;
+  height: $note__indicator-height;
+  border-radius: 0 $note__indicator-width $note__indicator-width 0;
+  background: var(--accent-color--light);
+}
+.note__container {
+  margin: $note__text-margin-top 0 styles.$spacing--xs;
+  min-height: 3 * styles.$line-height--medium;
+  width: 100%;
+  color: styles.$navy--900;
+  font-size: styles.$text-size--medium;
+  letter-spacing: styles.$letter-spacing--medium;
+  line-height: styles.$line-height--medium;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: pre-line;
+
+  &--extended {
+    // add the difference of note__footer
+    min-height: 3 * styles.$line-height--medium + $note__footer-height;
+  }
+}
+
+.note__text {
+  line-height: $note__text-line-height;
+  max-height: $note__text-lines * $note__text-line-height;
+  overflow: hidden;
+  position: relative;
+  word-break: break-word;
+}
+
+.note__text-spacer {
+  float: right;
+  width: 0;
+  height: ($note__text-lines - 1) * $note__text-line-height;
+}
+
+.note__marker-edited {
+  color: styles.$gray--700;
+  font-size: styles.$text--sm;
+}
+
+.note__show-more {
+  float: right;
+  clear: right;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: styles.$text-size--medium;
+  line-height: styles.$line-height--medium;
+  font-weight: 700;
+  color: styles.$navy--400;
+  padding: 0 0 0 5px;
+  background-color: styles.$gray--000;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 0;
+    width: 128px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, styles.$gray--000);
+    pointer-events: none;
+  }
+}
+
+.note__show-more-icon {
+  width: styles.$icon--small + 4px;
+  height: styles.$icon--small + 4px;
+  flex-shrink: 0;
+
+  path {
+    stroke-width: 3px;
+  }
+}
+
+.note__image-wrapper {
+  height: 72px;
+}
+
+.note__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.note__stack-icon {
+  height: styles.$icon--huge;
+  width: styles.$icon--huge;
+  position: absolute;
+  top: calc(50% - (styles.$icon--huge / 2));
+  left: calc(50% - (styles.$icon--huge / 2));
+  fill: var(--accent-color--light);
+}
+
+.note__header {
+  position: relative;
+  height: 28px;
+  display: flex;
+  flex-direction: row;
+  gap: styles.$spacing--sm;
+
+  z-index: styles.$note-z-index; // prevent the background image from overlaying it
+}
+
+.note__author-container {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.note__footer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  height: $note__footer-height;
+  margin-left: -(styles.$reaction-list__left-spacing); // a little to the left, the icon in NoteReactionList lines up
+
+  &--collapsed {
+    height: 0;
+  }
+}
+
+.note__author-image {
+  height: $note__author-image-size;
+  width: $note__author-image-size;
+  border-radius: 100%;
+}
+
+.note__delete-button {
+  display: none;
+}
+
+.note__delete-button--visible {
+  display: block;
+}
+
+.note__root-disabled-click {
+  cursor: not-allowed;
+}
+
+.note__disabled-click {
+  pointer-events: none;
+}
+
+// change note padding based on note size
+@container #{styles.$container__note} {
+  .note {
+    padding: 10px styles.$spacing--base 5px 10px;
+  }
+
+  .note__text {
+    margin-top: $note__text-margin-top--small;
+  }
+}
+
+[data-theme="dark"] {
+  .note,
+  .note__in-stack {
+    background-color: styles.$navy--400;
+    box-shadow:
+      0 4px 6px -1px rgba(styles.$navy--900, 0.1),
+      0 2px 4px -2px rgba(styles.$navy--900, 0.1);
+  }
+
+  .note__text {
+    color: styles.$gray--000;
+  }
+
+  .note__show-more {
+    color: styles.$gray--200;
+    background-color: styles.$navy--400;
+
+    &::before {
+      background: linear-gradient(to right, transparent, styles.$navy--400);
+    }
+  }
+}

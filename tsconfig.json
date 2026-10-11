@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "sourceMap": false,
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "types": ["node", "vitest/globals", "@testing-library/jest-dom"],
+    "paths": {
+      "api/*": ["./src/api/*"],
+      "assets/*": ["./src/assets/*"],
+      "components/*": ["./src/components/*"],
+      "constants/*": ["./src/constants/*"],
+      "i18n/*": ["./src/i18n/*"],
+      "routes/*": ["./src/routes/*"],
+      "store/*": ["./src/store/*"],
+      "types/*": ["./src/types/*"],
+      "utils/*": ["./src/utils/*"],
+      "*": ["./src/*"]
+    }
+  },
+  "include": ["src", "vite-env.d.ts" ,"vite-env-override.d.ts"]
+}

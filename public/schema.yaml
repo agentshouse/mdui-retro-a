@@ -1,0 +1,96 @@
+# House JSON Schema (draft 2020-12). Unconstrained patterns keep identifiers,
+# dates and serialized scalar data exact-match without changing accepted values.
+retro_board:
+  properties:
+    id:
+      type: string
+      pattern: ^[\s\S]*$
+    name:
+      type: string
+    description:
+      type: string
+    isLocked:
+      enum:
+      - 'true'
+      - 'false'
+  required:
+  - id
+  - name
+  - description
+  - isLocked
+retro_column:
+  properties:
+    id:
+      type: string
+      pattern: ^[\s\S]*$
+    board_id:
+      type: string
+      pattern: ^[\s\S]*$
+    name:
+      type: string
+    description:
+      type: string
+    color:
+      type: string
+      pattern: ^[\s\S]*$
+    index:
+      type: number
+    visible:
+      enum:
+      - 'true'
+      - 'false'
+  required:
+  - id
+  - board_id
+  - name
+  - description
+  - color
+  - index
+  - visible
+retro_note:
+  properties:
+    id:
+      type: string
+      pattern: ^[\s\S]*$
+    board_id:
+      type: string
+      pattern: ^[\s\S]*$
+    text:
+      type: string
+    column_id:
+      type: string
+      pattern: ^[\s\S]*$
+    stack_id:
+      type: string
+      pattern: ^[\s\S]*$
+    rank:
+      type: number
+    edited:
+      enum:
+      - 'true'
+      - 'false'
+    votes:
+      type: number
+  required:
+  - id
+  - board_id
+  - text
+  - column_id
+  - rank
+  - edited
+  - votes
+retro_vote:
+  properties:
+    id:
+      type: string
+      pattern: ^[\s\S]*$
+    board_id:
+      type: string
+      pattern: ^[\s\S]*$
+    note_id:
+      type: string
+      pattern: ^[\s\S]*$
+  required:
+  - id
+  - board_id
+  - note_id

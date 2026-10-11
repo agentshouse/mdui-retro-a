@@ -1,0 +1,285 @@
+{
+  "changes": [
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/board.md",
+      "base": "fr_kj.1.d",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_board\nid: \"sprint-24\"\nname: \"Sprint 24 retrospective\"\ndescription: \"Review the onboarding release and choose two improvements for the next sprint.\"\nisLocked: \"false\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/columns/sprint-24-went-well.md",
+      "base": "fr_kn.1.y",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"sprint-24-went-well\"\nboard_id: \"sprint-24\"\nname: \"Went well\"\ndescription: \"What should we keep doing?\"\ncolor: \"backlog-blue\"\nindex: 0\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-went-well-1.md",
+      "base": "fr_kx.1.8",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-went-well-1\"\nboard_id: \"sprint-24\"\ntext: \"Pairing on the onboarding flow reduced review cycles from three rounds to one.\"\ncolumn_id: \"sprint-24-went-well\"\nstack_id: \"\"\nrank: 4\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-went-well-2.md",
+      "base": "fr_ky.1.x",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-went-well-2\"\nboard_id: \"sprint-24\"\ntext: \"The release checklist caught the analytics event mismatch before launch.\"\ncolumn_id: \"sprint-24-went-well\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-went-well-3.md",
+      "base": "fr_kz.1.t",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-went-well-3\"\nboard_id: \"sprint-24\"\ntext: \"Support joined the demo and helped us spot confusing error messages.\"\ncolumn_id: \"sprint-24-went-well\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-went-well-4.md",
+      "base": "fr_m0.1.9",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-went-well-4\"\nboard_id: \"sprint-24\"\ntext: \"Daily build health updates made it easier to unblock one another.\"\ncolumn_id: \"sprint-24-went-well\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/columns/sprint-24-to-improve.md",
+      "base": "fr_km.1.e",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"sprint-24-to-improve\"\nboard_id: \"sprint-24\"\nname: \"To improve\"\ndescription: \"What could be better?\"\ncolor: \"poker-purple\"\nindex: 1\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-to-improve-1.md",
+      "base": "fr_ks.1.q",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-to-improve-1\"\nboard_id: \"sprint-24\"\ntext: \"Acceptance criteria changed after implementation started.\"\ncolumn_id: \"sprint-24-to-improve\"\nstack_id: \"\"\nrank: 4\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-to-improve-2.md",
+      "base": "fr_kt.1.h",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-to-improve-2\"\nboard_id: \"sprint-24\"\ntext: \"The staging dataset did not include accounts with more than 500 projects.\"\ncolumn_id: \"sprint-24-to-improve\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-to-improve-3.md",
+      "base": "fr_kv.1.s",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-to-improve-3\"\nboard_id: \"sprint-24\"\ntext: \"Two pull requests waited overnight without a clear reviewer.\"\ncolumn_id: \"sprint-24-to-improve\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-to-improve-4.md",
+      "base": "fr_kw.1.8",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-to-improve-4\"\nboard_id: \"sprint-24\"\ntext: \"Our estimation missed the migration dry run and rollback rehearsal.\"\ncolumn_id: \"sprint-24-to-improve\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/columns/sprint-24-actions.md",
+      "base": "fr_kk.1.7",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"sprint-24-actions\"\nboard_id: \"sprint-24\"\nname: \"Action items\"\ndescription: \"What will we try next?\"\ncolor: \"planning-pink\"\nindex: 2\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-actions-1.md",
+      "base": "fr_kp.1.k",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-actions-1\"\nboard_id: \"sprint-24\"\ntext: \"Add a migration rehearsal to the definition of ready for the next release.\"\ncolumn_id: \"sprint-24-actions\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-actions-2.md",
+      "base": "fr_kq.1.8",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-actions-2\"\nboard_id: \"sprint-24\"\ntext: \"Rotate a daily review buddy to keep small pull requests moving.\"\ncolumn_id: \"sprint-24-actions\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/sprint-24/notes/sprint-24-actions-3.md",
+      "base": "fr_kr.1.4",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"sprint-24-actions-3\"\nboard_id: \"sprint-24\"\ntext: \"Create three large-account fixtures in staging before sprint planning.\"\ncolumn_id: \"sprint-24-actions\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/board.md",
+      "base": "fr_jr.1.n",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_board\nid: \"discovery-workshop\"\nname: \"Discovery workshop\"\ndescription: \"Turn customer interview observations into a sharper team experiment.\"\nisLocked: \"false\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/columns/discovery-workshop-start.md",
+      "base": "fr_jt.1.g",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"discovery-workshop-start\"\nboard_id: \"discovery-workshop\"\nname: \"Start\"\ndescription: \"New things to try\"\ncolor: \"goal-green\"\nindex: 0\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-start-1.md",
+      "base": "fr_jz.1.p",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-start-1\"\nboard_id: \"discovery-workshop\"\ntext: \"Begin each interview with the customer describing their last real workflow.\"\ncolumn_id: \"discovery-workshop-start\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-start-2.md",
+      "base": "fr_k0.1.2",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-start-2\"\nboard_id: \"discovery-workshop\"\ntext: \"Capture the exact words people use for the export and sharing actions.\"\ncolumn_id: \"discovery-workshop-start\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-start-3.md",
+      "base": "fr_k1.1.m",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-start-3\"\nboard_id: \"discovery-workshop\"\ntext: \"Invite one engineer to the next two research sessions.\"\ncolumn_id: \"discovery-workshop-start\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/columns/discovery-workshop-stop.md",
+      "base": "fr_jv.1.q",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"discovery-workshop-stop\"\nboard_id: \"discovery-workshop\"\nname: \"Stop\"\ndescription: \"What is holding us back?\"\ncolor: \"planning-pink\"\nindex: 1\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-stop-1.md",
+      "base": "fr_k2.1.0",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-stop-1\"\nboard_id: \"discovery-workshop\"\ntext: \"Stop showing polished mockups before understanding the underlying job.\"\ncolumn_id: \"discovery-workshop-stop\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-stop-2.md",
+      "base": "fr_k3.1.j",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-stop-2\"\nboard_id: \"discovery-workshop\"\ntext: \"Avoid bundling onboarding and reporting questions into a single session.\"\ncolumn_id: \"discovery-workshop-stop\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-stop-3.md",
+      "base": "fr_k4.1.y",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-stop-3\"\nboard_id: \"discovery-workshop\"\ntext: \"Retire the duplicate interview notes spreadsheet after this workshop.\"\ncolumn_id: \"discovery-workshop-stop\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/columns/discovery-workshop-continue.md",
+      "base": "fr_js.1.n",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"discovery-workshop-continue\"\nboard_id: \"discovery-workshop\"\nname: \"Continue\"\ndescription: \"Keep the good things going\"\ncolor: \"backlog-blue\"\nindex: 2\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-continue-1.md",
+      "base": "fr_jw.1.3",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-continue-1\"\nboard_id: \"discovery-workshop\"\ntext: \"Keep writing a short evidence summary within a day of each interview.\"\ncolumn_id: \"discovery-workshop-continue\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-continue-2.md",
+      "base": "fr_jx.1.4",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-continue-2\"\nboard_id: \"discovery-workshop\"\ntext: \"Continue reviewing surprising quotes as a whole team.\"\ncolumn_id: \"discovery-workshop-continue\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/discovery-workshop/notes/discovery-workshop-continue-3.md",
+      "base": "fr_jy.1.4",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"discovery-workshop-continue-3\"\nboard_id: \"discovery-workshop\"\ntext: \"Keep the shared research questions visible during planning.\"\ncolumn_id: \"discovery-workshop-continue\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/board.md",
+      "base": "fr_k5.1.f",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_board\nid: \"launch-readiness\"\nname: \"Launch readiness retrospective\"\ndescription: \"Reflect on the beta rollout and prepare for the wider release.\"\nisLocked: \"false\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/columns/launch-readiness-wins.md",
+      "base": "fr_k8.1.r",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"launch-readiness-wins\"\nboard_id: \"launch-readiness\"\nname: \"Wins\"\ndescription: \"Where did preparation pay off?\"\ncolor: \"online-orange\"\nindex: 0\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-wins-1.md",
+      "base": "fr_kf.1.b",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-wins-1\"\nboard_id: \"launch-readiness\"\ntext: \"The staged rollout gave us a clear signal before increasing traffic.\"\ncolumn_id: \"launch-readiness-wins\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-wins-2.md",
+      "base": "fr_kg.1.k",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-wins-2\"\nboard_id: \"launch-readiness\"\ntext: \"The troubleshooting guide answered the most common beta questions.\"\ncolumn_id: \"launch-readiness-wins\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-wins-3.md",
+      "base": "fr_kh.1.2",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-wins-3\"\nboard_id: \"launch-readiness\"\ntext: \"The support handover included owners and fallback routes.\"\ncolumn_id: \"launch-readiness-wins\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/columns/launch-readiness-lessons.md",
+      "base": "fr_k7.1.9",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"launch-readiness-lessons\"\nboard_id: \"launch-readiness\"\nname: \"Lessons\"\ndescription: \"Where did we get surprised?\"\ncolor: \"value-violet\"\nindex: 1\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-lessons-1.md",
+      "base": "fr_kc.1.e",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-lessons-1\"\nboard_id: \"launch-readiness\"\ntext: \"Dashboard alerts were noisy during the first hour of the beta.\"\ncolumn_id: \"launch-readiness-lessons\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-lessons-2.md",
+      "base": "fr_kd.1.d",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-lessons-2\"\nboard_id: \"launch-readiness\"\ntext: \"The release note draft arrived too late for a careful review.\"\ncolumn_id: \"launch-readiness-lessons\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-lessons-3.md",
+      "base": "fr_ke.1.r",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-lessons-3\"\nboard_id: \"launch-readiness\"\ntext: \"Two edge cases relied on undocumented feature flags.\"\ncolumn_id: \"launch-readiness-lessons\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/columns/launch-readiness-experiments.md",
+      "base": "fr_k6.1.d",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_column\nid: \"launch-readiness-experiments\"\nboard_id: \"launch-readiness\"\nname: \"Next experiments\"\ndescription: \"Small changes with a clear check\"\ncolor: \"yielding-yellow\"\nindex: 2\nvisible: \"true\"\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-experiments-1.md",
+      "base": "fr_k9.1.8",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-experiments-1\"\nboard_id: \"launch-readiness\"\ntext: \"Tune the beta alert thresholds and review the first 24 hours of signal.\"\ncolumn_id: \"launch-readiness-experiments\"\nstack_id: \"\"\nrank: 3\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-experiments-2.md",
+      "base": "fr_ka.1.5",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-experiments-2\"\nboard_id: \"launch-readiness\"\ntext: \"Draft release notes at the start of the release candidate window.\"\ncolumn_id: \"launch-readiness-experiments\"\nstack_id: \"\"\nrank: 2\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "replace",
+      "path": "/rooms/retro-board-port/retros/launch-readiness/notes/launch-readiness-experiments-3.md",
+      "base": "fr_kb.1.q",
+      "content": "# Archived synthetic fixture\n\nThis earlier invented fixture has been retired from the App dataset under Master1150. Its original text is retained below for recovery; it is not donor data.\n\n```markdown\n---\ntype: retro_note\nid: \"launch-readiness-experiments-3\"\nboard_id: \"launch-readiness\"\ntext: \"Add feature flag ownership and removal dates to the checklist.\"\ncolumn_id: \"launch-readiness-experiments\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n```\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/board.md",
+      "content": "---\ntype: retro_board\nid: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\nname: \"Test Board\"\ndescription: \"Licensed donor export test board. Sample content and historical vote totals, not live participant activity.\"\nisLocked: \"false\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/columns/68559232-b70f-4db7-abae-da6f31206a31.md",
+      "content": "---\ntype: retro_column\nid: \"68559232-b70f-4db7-abae-da6f31206a31\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\nname: \"Positive\"\ndescription: \"\"\ncolor: \"backlog-blue\"\nindex: 0\nvisible: \"true\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/columns/9f43d504-351d-4afe-b248-93b03bd2f9dd.md",
+      "content": "---\ntype: retro_column\nid: \"9f43d504-351d-4afe-b248-93b03bd2f9dd\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\nname: \"Negative\"\ndescription: \"\"\ncolor: \"lean-lilac\"\nindex: 1\nvisible: \"true\"\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/24ceedf8-9c7b-4993-b021-06ef0d67ef80.md",
+      "content": "---\ntype: retro_note\nid: \"24ceedf8-9c7b-4993-b021-06ef0d67ef80\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"qwert\"\ncolumn_id: \"68559232-b70f-4db7-abae-da6f31206a31\"\nstack_id: \"\"\nrank: 0\nedited: \"false\"\nvotes: 2\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/cd93b71b-d5df-404d-b34d-da5f03f29498.md",
+      "content": "---\ntype: retro_note\nid: \"cd93b71b-d5df-404d-b34d-da5f03f29498\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"asdf\"\ncolumn_id: \"68559232-b70f-4db7-abae-da6f31206a31\"\nstack_id: \"24ceedf8-9c7b-4993-b021-06ef0d67ef80\"\nrank: 0\nedited: \"false\"\nvotes: 1\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/835929bf-0bf6-444d-b718-ac23568fb2d0.md",
+      "content": "---\ntype: retro_note\nid: \"835929bf-0bf6-444d-b718-ac23568fb2d0\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"poiuz\"\ncolumn_id: \"9f43d504-351d-4afe-b248-93b03bd2f9dd\"\nstack_id: \"\"\nrank: 1\nedited: \"false\"\nvotes: 0\n---\n"
+    },
+    {
+      "op": "create",
+      "path": "/rooms/retro-board-port/retros/4af0854f-2cf1-4607-b1a6-6f96cd88a000/notes/b2ed2bd1-e77f-4311-b4ae-c6279a8d90aa.md",
+      "content": "---\ntype: retro_note\nid: \"b2ed2bd1-e77f-4311-b4ae-c6279a8d90aa\"\nboard_id: \"4af0854f-2cf1-4607-b1a6-6f96cd88a000\"\ntext: \"asdf\"\ncolumn_id: \"9f43d504-351d-4afe-b248-93b03bd2f9dd\"\nstack_id: \"\"\nrank: 0\nedited: \"false\"\nvotes: 2\n---\n"
+    }
+  ]
+}
