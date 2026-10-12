@@ -1,5 +1,5 @@
 import {describe,it,expect,vi} from 'vitest';
-import {connectHouseBridge} from '@agentshouse/app-bridge';
+import {houseBridge} from '@agentshouse/app-bridge';
 import {createHouseBridgeTestHost} from '@agentshouse/app-bridge/test-host';
 import {BoardNavigation,boardAddress,readBoardAddress} from '../src/navigation';
 describe('Retro House addresses',()=>{
@@ -12,7 +12,7 @@ describe('Retro House addresses',()=>{
  });
  it('uses the official bridge for cold note, Back/Forward and explicit replace after deletion, without echo',async()=>{
   const target={room:'r',path:'retros/b/board.md',note:'retros/b/notes/n.md'};
-  const host=createHouseBridgeTestHost({address:boardAddress(target)}),nav=new BoardNavigation(connectHouseBridge(host));const off=nav.subscribe(vi.fn());
+  const host=createHouseBridgeTestHost({address:boardAddress(target)}),nav=new BoardNavigation(houseBridge());const off=nav.subscribe(vi.fn());
   await vi.waitFor(()=>expect(nav.snapshot().target).toEqual(target));expect(host.navigations).toHaveLength(0);
   nav.navigate({room:'r',path:'retros/c/board.md'});await vi.waitFor(()=>expect(nav.snapshot().target?.path).toBe('retros/c/board.md'));
   host.open(boardAddress(target));await vi.waitFor(()=>expect(nav.snapshot().target).toEqual(target));expect(host.navigations).toHaveLength(1);

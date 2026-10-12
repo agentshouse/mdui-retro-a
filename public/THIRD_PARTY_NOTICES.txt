@@ -40,7 +40,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ================================================================================
-@agentshouse/app-bridge 0.1.0-ce524f6608238
+@agentshouse/app-bridge 0.1.0-ca4ec913df08d
 License identifier: MIT
 Installed path: node_modules/@agentshouse/app-bridge
 
@@ -70,9 +70,9 @@ SOFTWARE.
 
 
 ================================================================================
-@agentshouse/mdmodel 0.1.0-c68e2039f1ca8
+@agentshouse/mdruntime 0.1.0-cf6d5f0a5c9c8
 License identifier: MIT
-Installed path: node_modules/@agentshouse/mdmodel
+Installed path: node_modules/@agentshouse/mdruntime
 
 --- LICENSE ---
 
@@ -100,9 +100,9 @@ SOFTWARE.
 
 
 ================================================================================
-@agentshouse/mdruntime 0.1.0-cff8ba8fa2542
+@agentshouse/mdmodel 0.1.0-c64dbada0730d
 License identifier: MIT
-Installed path: node_modules/@agentshouse/mdruntime
+Installed path: node_modules/@agentshouse/mdruntime/node_modules/@agentshouse/mdmodel
 
 --- LICENSE ---
 

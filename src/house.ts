@@ -1,4 +1,4 @@
-import { connectHouseBridge } from '@agentshouse/app-bridge'
+import { houseBridge as injectedHouseBridge } from '@agentshouse/app-bridge'
 import {
   DEFAULT_COLUMNS, idField, validateBoard, validateColumn, validateNote, validateVote, validateReferences,
   columnsFor, notesFor, votesFor, sameBoard,
@@ -8,7 +8,7 @@ import {
 
 // This is the only application module that imports or calls the Runtime.
 // The host supplies its connected Runtime client through the bridge.
-export type HouseRuntime = Awaited<ReturnType<typeof connectHouseBridge>['runtime']>
+export type HouseRuntime = Awaited<ReturnType<typeof injectedHouseBridge>['runtime']>
 export type HouseRoom = Awaited<ReturnType<HouseRuntime['rooms']>>[number]
 export type QueuedWrite = { outcome: 'queued'; identifier: string }
 export type BoardPatch = Partial<Omit<BoardFields, 'id'>>
@@ -45,10 +45,10 @@ function headAuthor(document: Document): Attribution | null {
   return { kind: author.kind, id: author.id, name: author.name }
 }
 
-let bridge: ReturnType<typeof connectHouseBridge> | undefined
+let bridge: ReturnType<typeof injectedHouseBridge> | undefined
 let connection: Promise<HouseRuntime> | undefined
 export function houseBridge() {
-  if (!bridge) { bridge = connectHouseBridge(); bridge.setTab({ title: 'Retro Board' }) }
+  if (!bridge) { bridge = injectedHouseBridge(); bridge.setTab({ title: 'Retro Board' }) }
   return bridge
 }
 export function houseRuntime(): Promise<HouseRuntime> {
