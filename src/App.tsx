@@ -1,5 +1,5 @@
 import {useNoteDraft,type NoteDraftSource} from "./useNoteDraft";
-import {useEffect,useRef,useState,type FormEvent} from 'react';
+import {useEffect,useMemo,useRef,useState,type FormEvent} from 'react';
 import {BoardView,type BoardActions} from './BoardView';
 import {exportCSV,exportMarkdown} from './export';
 import {AttributionLabel} from './Attribution';
@@ -7,12 +7,18 @@ import {FeedbackContext,Modal} from './Modal';
 import {Button} from './components/Button';
 import {ColumnsIcon,PlusIcon} from './Icons';
 import {type Board,type Column,type Note,type Vote,type RetroData,COLORS,DEFAULT_COLUMNS,MAX_NOTE_LENGTH,columnsFor,notesFor,votesFor,parseImport,exportBoard} from './model';
-import {houseRuntime,observeRetro,observeRooms,observeSyncStatus,observeRoomDrafts,observeStorageLoss,observeConnectionRefusal,observeServiceMode,readRetro,createBoard,updateBoard,createColumn,updateColumn,createNote,updateNote,addVote,moveNote,deleteNote,deleteColumn,deleteBoard,importBoard,groupNotes,unstackNote,reorderColumns,reorderNotes,openNoteDraft,type NoteDraftSession,type HouseRuntime,type HouseRoom,type RetroResult} from './house';
+import {houseBridge,houseRuntime,observeRetro,observeRooms,observeSyncStatus,observeRoomDrafts,observeStorageLoss,observeConnectionRefusal,observeServiceMode,readRetro,createBoard,updateBoard,createColumn,updateColumn,createNote,updateNote,addVote,moveNote,deleteNote,deleteColumn,deleteBoard,importBoard,groupNotes,unstackNote,reorderColumns,reorderNotes,openNoteDraft,type NoteDraftSession,type HouseRuntime,type HouseRoom,type RetroResult} from './house';
+import {BoardNavigation,type BoardTarget,type BoardRoute} from './navigation';
 const keyOf=(row:{room:string;path:string})=>`${row.room}/${row.path}`;
 const errorText=(e:unknown)=>e instanceof Error?e.message:String(e);
 type Dialog={kind:'export'}|{kind:'new'}|{kind:'board';board:Board}|{kind:'column';column?:Column}|{kind:'note';note:Note};
 function download(name:string,text:string,mime='application/json') {const url=URL.createObjectURL(new Blob([text],{type:mime}));const anchor=document.createElement('a');anchor.href=url;anchor.download=name;anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-export function App() {
+export function App({navigation: suppliedNavigation}:{navigation?:BoardNavigation|null}={}) {
+  const navigation=useMemo(()=>suppliedNavigation===undefined?new BoardNavigation(houseBridge()):suppliedNavigation,[suppliedNavigation]);
+  const [route,setRoute]=useState<BoardRoute>(()=>navigation?.snapshot()??{target:null,ready:true,error:null});
+  const routeGeneration=useRef(0);
+  const openedNote=useRef('');
+
   const [md,setMd]=useState<HouseRuntime|null>(null);
   const [data,setData]=useState<RetroData>({boards:[],columns:[],notes:[],votes:[]});
   const [rooms,setRooms]=useState<readonly HouseRoom[]>([]);
@@ -30,6 +36,16 @@ export function App() {
   const [halted,setHalted]=useState(false);
   const [dark,setDark]=useState(false);
   const input=useRef<HTMLInputElement>(null);
+  const visibleDialog=useRef<Dialog|null>(dialog);visibleDialog.current=dialog;
+  useEffect(()=>{
+    if(!navigation)return;
+    let prior:string|undefined;
+    const apply=()=>{const next=navigation.snapshot();setRoute(next);if(!next.ready)return;const identity=JSON.stringify(next.target);if(identity===prior)return;prior=identity;routeGeneration.current++;openedNote.current='';setSelected(next.target?keyOf(next.target):'');setDialog(null);};
+    const off=navigation.subscribe(apply);apply();return off;
+  },[navigation]);
+  const navigate=(target:BoardTarget|null,replace=false)=>{routeGeneration.current++;if(navigation)navigation.navigate(target,replace);else {setSelected(target?keyOf(target):'');setDialog(null);}};
+  const closeDialog=()=>{if(dialog?.kind==='note'&&navigation&&route.target)navigate({room:route.target.room,path:route.target.path});else setDialog(null);};
+
   useEffect(()=>{document.documentElement.dataset.theme=dark?'dark':'light';},[dark]);
   useEffect(()=>{
     let disposed=false; const cleanup:(()=>void)[]=[];
@@ -59,37 +75,51 @@ export function App() {
   const columns=board?columnsFor(data,board):[];
   const notes=board?notesFor(data,board):[];
   const boardVotes=board?votesFor(data,board):[];
+  const noteRoute=route.target?.note;
+  useEffect(()=>{
+    const identity=noteRoute&&route.target?`${keyOf(route.target)}/${noteRoute}`:'';
+    if(!identity){openedNote.current='';return;}
+    if(!loaded||!board)return;
+    const note=data.notes.find(value=>value.room===board.room&&value.path===noteRoute&&value.board_id===board.id);
+    if(!note){openedNote.current='';setDialog(previous=>previous?.kind==='note'?null:previous);return;}
+    if(openedNote.current!==identity){openedNote.current=identity;setDialog({kind:'note',note});}
+  },[loaded,board,data.notes,noteRoute,route.target]);
+  const unavailableNote=loaded&&!!board&&!!noteRoute&&!data.notes.some(value=>value.room===board.room&&value.path===noteRoute&&value.board_id===board.id);
+  const openNote=(note:Note)=>{if(navigation&&board)navigate({room:board.room,path:board.path,note:note.path});else setDialog({kind:'note',note});};
+
   const blocked=busy||fatal||!md||!syncCompleted||rooms.length!==1||!!(selected&&!currentBoard);
   async function act(work:()=>Promise<unknown>):Promise<boolean>{
     if(busyRef.current||blocked)return false;
     busyRef.current=true;setBusy(true);setError('');
     try{await work();return true;}catch(e){setError(errorText(e));return false;}finally{busyRef.current=false;setBusy(false);}
   }
-  async function withClose(work:()=>Promise<unknown>){if(await act(work))setDialog(null);}
+  async function withClose(work:()=>Promise<unknown>){const opened=visibleDialog.current;const generation=routeGeneration.current;if(await act(work)){if(visibleDialog.current===opened&&routeGeneration.current===generation)closeDialog();}}
   const actions:BoardActions={
     addNote:(column,text,draft)=>act(()=>draft?draft.save(text):createNote(md!,board!,column,text)),
     openNoteDraft:column=>openNoteDraft(md!,board!,{column}),
     addVote:note=>void act(()=>addVote(md!,board!,note)),
-    editNote:note=>setDialog({kind:'note',note}),editColumn:column=>setDialog({kind:'column',column}),
+    editNote:openNote,editColumn:column=>setDialog({kind:'column',column}),
     moveNote:(note,column)=>void act(()=>moveNote(md!,board!,note,column,notes)),
     dropNote:(drop,opened)=>void act(()=>drop.kind==='group'?groupNotes(md!,opened.board,drop.target,drop.members):drop.kind==='reorder'?reorderNotes(md!,opened.board,drop.column,drop.orderedRoots):moveNote(md!,opened.board,drop.note,drop.column,opened.notes,drop.orderedRoots)),
-    library:()=>setSelected(''),settings:()=>setDialog({kind:'board',board:board!}),addColumn:()=>setDialog({kind:'column'}),
+    library:()=>navigate(null),settings:()=>setDialog({kind:'board',board:board!}),addColumn:()=>setDialog({kind:'column'}),
     export:()=>setDialog({kind:'export'}),
     toggleLock:()=>void act(()=>updateBoard(md!,board!,{isLocked:!board!.isLocked})),toggleTheme:()=>setDark(v=>!v),
   };
-  const removeBoard=async(value:Board)=>{if(!confirm(`Delete “${value.name}” and all of its columns, notes and vote documents from the Room?`))return;await withClose(async()=>{await deleteBoard(md!,value,data);setSelected('');});};
+  const removeBoard=async(value:Board)=>{if(!confirm(`Delete “${value.name}” and all of its columns, notes and vote documents from the Room?`))return;await withClose(async()=>{const generation=routeGeneration.current;await deleteBoard(md!,value,data);if(generation===routeGeneration.current&&selected===keyOf(value)){setDialog(null);navigate(null,true);}});};
   const removeColumn=async(value:Column)=>{if(!confirm(`Delete “${value.name}” and all of its notes and vote documents from the Room?`))return;await withClose(()=>deleteColumn(md!,board!,value,data));};
   const removeNote=async(value:Note)=>{if(!confirm('Delete this note and any notes grouped beneath it, including their vote documents, from the Room?'))return;await withClose(()=>deleteNote(md!,board!,value,data));};
   const bindingError=syncCompleted&&rooms.length!==1?(rooms.length>1?'Retro board received multiple data bindings. Check this App’s configuration in House.':'No Retro Room is bound. Bind exactly one Retro Room in House.'):'';
   return <FeedbackContext.Provider value={bindingError||error||attention||(halted?'Provider writes are paused; Save queues changes locally.':'')}><div className="retro-app">
+    {route.error&&<p role="alert" className="retro-inline-notice">{route.error}</p>}
+    {unavailableNote&&<p role="alert" className="retro-inline-notice">The linked note is not in this board. <button onClick={()=>board&&navigate({room:board.room,path:board.path})}>Back to board</button></p>}
     {!syncCompleted&&<p role="status">Loading…</p>}
     {board?<BoardView board={board} columns={columns} notes={notes} votes={boardVotes} busy={blocked} actions={actions}/>:<main className="retro-library">
       <header className="retro-library-header"><div><ColumnsIcon/><h1>Retro board</h1></div><button className="icon-button" aria-label="Toggle dark mode" onClick={()=>setDark(v=>!v)}>◐</button></header>
       <section className="retro-library-intro"><p className="retro-eyebrow">Make space for your next idea</p><h2>Your retrospectives</h2><p>Reflect on the work. Find the patterns. Decide what comes next.</p></section>
       <div className="retro-library-actions"><Button icon={<PlusIcon/>} disabled={blocked||!room} onClick={()=>setDialog({kind:'new'})}>New board</Button><Button variant="secondary" disabled={blocked||!room} onClick={()=>input.current?.click()}>Import JSON</Button></div>
-      <input type="file" ref={input} accept="application/json,.json" hidden onChange={async event=>{const file=event.target.files?.[0];event.target.value='';if(!file)return;if(file.size>5_000_000){setError('Imported board is too large (5 MB maximum).');return;}await act(async()=>{const result=await importBoard(md!,room,parseImport(await file.text()));setSelected(keyOf(result.board));});}}/>
+      <input type="file" ref={input} accept="application/json,.json" hidden onChange={async event=>{const file=event.target.files?.[0];event.target.value='';if(!file)return;if(file.size>5_000_000){setError('Imported board is too large (5 MB maximum).');return;}await act(async()=>{const generation=routeGeneration.current;const result=await importBoard(md!,room,parseImport(await file.text()));if(generation===routeGeneration.current){setDialog(null);navigate({room:result.board.room,path:result.board.path});}});}}/>
       {loaded&&selected&&!board&&<p className="retro-inline-notice">The selected board is no longer in the Room.</p>}
-      <section hidden={!!bindingError} className="retro-board-cards" aria-label="Available boards">{data.boards.map(value=>{const cs=columnsFor(data,value);return <button className="retro-board-card" key={keyOf(value)} onClick={()=>setSelected(keyOf(value))}><div className="retro-board-preview" aria-hidden>{cs.slice(0,4).map(c=><div key={c.id} className={getColorClass(c.color)}><span/><span/><span/></div>)}</div><h3>{value.name}</h3><p>{value.description||'A space to reflect together.'}</p><span>{cs.length} columns · {notesFor(data,value).length} notes{value.isLocked?' · Locked':''}</span></button>;})}</section>
+      <section hidden={!!bindingError} className="retro-board-cards" aria-label="Available boards">{data.boards.map(value=>{const cs=columnsFor(data,value);return <button className="retro-board-card" key={keyOf(value)} onClick={()=>navigate({room:value.room,path:value.path})}><div className="retro-board-preview" aria-hidden>{cs.slice(0,4).map(c=><div key={c.id} className={getColorClass(c.color)}><span/><span/><span/></div>)}</div><h3>{value.name}</h3><p>{value.description||'A space to reflect together.'}</p><span>{cs.length} columns · {notesFor(data,value).length} notes{value.isLocked?' · Locked':''}</span></button>;})}</section>
       {!data.boards.length&&<div className="retro-empty"><h3>{loaded&&syncCompleted&&!bindingError?'A fresh start':!syncCompleted?'Loading…':'Your boards are unavailable'}</h3><p>{syncCompleted&&rooms.length===1?'Create a board or import a local JSON file.':'Board documents will appear when House connects.'}</p></div>}
     </main>}
     {(bindingError||error||attention||halted)&&<div className="retro-notices">
@@ -98,12 +128,12 @@ export function App() {
       {halted&&<div role="status" className="retro-notice">Provider writes are paused. You can keep typing and Save; changes queue locally until writes resume.</div>}
     </div>}
     {dialog?.kind==='export'&&board&&<Modal title="Export board" close={()=>setDialog(null)}><p className="retro-help">Download the current Room snapshot. JSON can be imported into a new board. Attributed vote documents are not copied into imports; historical counts are separate from new votes.</p><div className="retro-form-actions">{(['json','csv','md'] as const).map(format=><button key={format} onClick={()=>{try{const text=format==='json'?exportBoard(data,board):format==='csv'?exportCSV(data,board):exportMarkdown(data,board);download(`${board.name.replace(/[^a-z0-9_-]+/gi,'-')}.${format}`,text,format==='json'?'application/json':format==='csv'?'text/csv':'text/markdown');}catch(e){setError(errorText(e));}}}>Download {format==='md'?'Markdown':format.toUpperCase()}</button>)}</div></Modal>}
-    {dialog?.kind==='new'&&<BoardForm busy={blocked} close={()=>setDialog(null)} save={(name,description,template)=>withClose(async()=>{const result=await createBoard(md!,room,name,template==='start-stop'?[
+    {dialog?.kind==='new'&&<BoardForm busy={blocked} close={()=>setDialog(null)} save={(name,description,template)=>withClose(async()=>{const generation=routeGeneration.current;const result=await createBoard(md!,room,name,template==='start-stop'?[
       {name:'Start',description:'New things to try',color:'goal-green',index:0},{name:'Stop',description:'What is holding us back?',color:'planning-pink',index:1},{name:'Continue',description:'Keep the good things going',color:'backlog-blue',index:2}
-    ]:DEFAULT_COLUMNS,description);setSelected(keyOf(result.board));})}/>}
+    ]:DEFAULT_COLUMNS,description);if(generation===routeGeneration.current){setDialog(null);navigate({room:result.board.room,path:result.board.path});}})}/>}
     {dialog?.kind==='board'&&<BoardForm board={dialog.board} busy={blocked} close={()=>setDialog(null)} remove={()=>void removeBoard(dialog.board)} save={(name,description)=>withClose(()=>updateBoard(md!,dialog.board,{name,description}))}/>}
     {dialog?.kind==='column'&&board&&<ColumnForm column={dialog.column} busy={blocked||board.isLocked} close={()=>setDialog(null)} remove={dialog.column?()=>void removeColumn(dialog.column!):undefined} reorder={dialog.column?(direction)=>{const i=columns.findIndex(c=>c.id===dialog.column!.id),j=i+direction;if(j<0||j>=columns.length)return;const ordered=[...columns];[ordered[i],ordered[j]]=[ordered[j],ordered[i]];void withClose(()=>reorderColumns(md!,board,ordered));}:undefined} save={value=>withClose(()=>dialog.column?updateColumn(md!,board,dialog.column,value):createColumn(md!,board,{...value,index:columns.length}))}/>}
-    {dialog?.kind==='note'&&board&&<NoteForm key={keyOf(dialog.note)} note={dialog.note} notes={notes} columns={columns} busy={blocked||board.isLocked} close={()=>setDialog(null)} votes={boardVotes.filter(vote=>vote.note_id===dialog.note.id)} addVote={()=>void act(()=>addVote(md!,board,dialog.note))} draftSource={()=>openNoteDraft(md!,board,{note:dialog.note})} save={(text,draft)=>withClose(()=>draft?draft.save(text):updateNote(md!,board,dialog.note,{text,edited:true}))} remove={()=>void removeNote(dialog.note)} move={column=>withClose(()=>moveNote(md!,board,dialog.note,column,notes))} group={root=>withClose(()=>groupNotes(md!,board,root,[dialog.note]))} unstack={()=>withClose(()=>unstackNote(md!,board,dialog.note))} open={note=>setDialog({kind:'note',note})} reorder={direction=>{const column=columns.find(c=>c.id===dialog.note.column_id);if(!column)return;const roots=notes.filter(n=>n.column_id===column.id&&!n.stack_id);const i=roots.findIndex(n=>n.id===dialog.note.id),j=i+direction;if(i<0||j<0||j>=roots.length)return;[roots[i],roots[j]]=[roots[j],roots[i]];void withClose(()=>reorderNotes(md!,board,column,roots));}}/>}
+    {dialog?.kind==='note'&&board&&<NoteForm key={keyOf(dialog.note)} note={dialog.note} notes={notes} columns={columns} busy={blocked||board.isLocked} close={closeDialog} votes={boardVotes.filter(vote=>vote.note_id===dialog.note.id)} addVote={()=>void act(()=>addVote(md!,board,dialog.note))} draftSource={()=>openNoteDraft(md!,board,{note:dialog.note})} save={(text,draft)=>withClose(()=>draft?draft.save(text):updateNote(md!,board,dialog.note,{text,edited:true}))} remove={()=>void removeNote(dialog.note)} move={column=>withClose(()=>moveNote(md!,board,dialog.note,column,notes))} group={root=>withClose(()=>groupNotes(md!,board,root,[dialog.note]))} unstack={()=>withClose(()=>unstackNote(md!,board,dialog.note))} open={openNote} reorder={direction=>{const column=columns.find(c=>c.id===dialog.note.column_id);if(!column)return;const roots=notes.filter(n=>n.column_id===column.id&&!n.stack_id);const i=roots.findIndex(n=>n.id===dialog.note.id),j=i+direction;if(i<0||j<0||j>=roots.length)return;[roots[i],roots[j]]=[roots[j],roots[i]];void withClose(()=>reorderNotes(md!,board,column,roots));}}/>}
   </div></FeedbackContext.Provider>;
 }
 function getColorClass(color:string){return `accent-color__${color}`;}

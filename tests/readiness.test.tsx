@@ -13,7 +13,7 @@ const room={locator:'r',name:'Retro'};
 const status=(lastCompleted:string|null)=>({lastCompleted,state:'syncing',attentionRequired:[],providerUnreachable:false,reset:null});
 beforeEach(()=>{fixture.runtime={};fixture.observations.clear();observe('rooms',[]);observe('sync',status(null));observe('query',{documents:[]});observe('drafts',[]);observe('mode','open');observe('loss',null);observe('refusal',null);});
 it('keeps initial empty and ambiguous device state loading until a completed sync, then recovers on every Rooms value',async()=>{
-  render(<App/>);await screen.findByRole('status');
+  render(<App navigation={null}/>);await screen.findByRole('status');
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   act(()=>fixture.observations.get('rooms').emit([room,{...room,locator:'other'}]));
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
@@ -27,7 +27,7 @@ it('keeps initial empty and ambiguous device state loading until a completed syn
 });
 it('preserves an unsaved donor form on reach loss and enables it on later recovery',async()=>{
   fixture.observations.get('rooms').value=[room];fixture.observations.get('sync').value=status('2026-10-11T13:00:00Z');
-  render(<App/>);await waitFor(()=>expect(screen.getByRole('button',{name:'New board'})).toBeEnabled());
+  render(<App navigation={null}/>);await waitFor(()=>expect(screen.getByRole('button',{name:'New board'})).toBeEnabled());
   fireEvent.click(screen.getByRole('button',{name:'New board'}));
   const input=screen.getByLabelText('Board name');fireEvent.change(input,{target:{value:'Keep my retrospective'}});
   act(()=>fixture.observations.get('rooms').emit([]));
@@ -40,7 +40,7 @@ it('preserves an unsaved donor form on reach loss and enables it on later recove
 it('keeps typing and local Save enabled during provider write-halt while retaining reach guards',async()=>{
   const {md,methods}=boundary();fixture.runtime=md;
   fixture.observations.get('rooms').value=[room];fixture.observations.get('sync').value=status('2026-10-11T13:00:00Z');fixture.observations.get('mode').value='write-halted';
-  render(<App/>);await waitFor(()=>expect(screen.getByRole('button',{name:'New board'})).toBeEnabled());
+  render(<App navigation={null}/>);await waitFor(()=>expect(screen.getByRole('button',{name:'New board'})).toBeEnabled());
   fireEvent.click(screen.getByRole('button',{name:'New board'}));const input=screen.getByLabelText('Board name');expect(input).toBeEnabled();fireEvent.change(input,{target:{value:'Saved during provider halt'}});
   act(()=>fixture.observations.get('rooms').emit([]));expect(screen.getByRole('button',{name:'Create board'})).toBeDisabled();
   act(()=>fixture.observations.get('rooms').emit([room]));expect(input).toHaveValue('Saved during provider halt');expect(screen.getByRole('button',{name:'Create board'})).toBeEnabled();

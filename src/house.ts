@@ -45,13 +45,14 @@ function headAuthor(document: Document): Attribution | null {
   return { kind: author.kind, id: author.id, name: author.name }
 }
 
+let bridge: ReturnType<typeof connectHouseBridge> | undefined
 let connection: Promise<HouseRuntime> | undefined
+export function houseBridge() {
+  if (!bridge) { bridge = connectHouseBridge(); bridge.setTab({ title: 'Retro Board' }) }
+  return bridge
+}
 export function houseRuntime(): Promise<HouseRuntime> {
-  connection ??= (async () => {
-    const bridge = connectHouseBridge()
-    bridge.setTab({ title: 'Retro Board' })
-    return bridge.runtime
-  })().catch((error: unknown) => { connection = undefined; throw error })
+  connection ??= (async () => houseBridge().runtime)().catch((error: unknown) => { connection = undefined; bridge = undefined; throw error })
   return connection
 }
 export const retroQuery = {
