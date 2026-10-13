@@ -62,7 +62,7 @@ export function App({navigation: suppliedNavigation}:{navigation?:BoardNavigatio
         listen(observeRoomDrafts(runtime),value=>{if(value.some(draft=>draft.returned))setAttention('A Room draft needs attention. Resolve it in House before editing that document again.');}),
         listen(observeServiceMode(runtime),value=>setHalted(value==='write-halted')),
         listen(observeStorageLoss(runtime),value=>{if(value)setAttention(`House storage warning: ${value}`);}),
-        listen(observeConnectionRefusal(runtime),value=>{if(value){setError(`House connection refused: ${value.reason}`);setFatal(true);}}),
+        listen(observeConnectionRefusal(runtime),value=>{if(value){setError(`House connection refused: ${value.code}`);setFatal(true);}}),
       ]);
     }
     connect().catch(e=>{if(!disposed){setError(errorText(e));setFatal(true);}});

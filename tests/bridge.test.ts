@@ -39,7 +39,7 @@ test('production uses the licensed bridge without a direct Runtime import or dep
   const source = readFileSync('src/house.ts', 'utf8')
   assert.doesNotMatch(source, /@agentshouse\/mdruntime|connectMdRuntime|RuntimePort/)
   const pkg = JSON.parse(readFileSync('package.json', 'utf8'))
-  assert.equal(pkg.dependencies['@agentshouse/app-bridge'], '0.1.0-ca4ec913df08d')
+  assert.equal(pkg.dependencies['@agentshouse/app-bridge'], '0.1.0-cc70c9b07c3ec')
   assert.equal(pkg.dependencies['@agentshouse/mdruntime'], undefined)
   const bridge = JSON.parse(readFileSync('node_modules/@agentshouse/app-bridge/package.json', 'utf8'))
   assert.equal(bridge.license, 'MIT')

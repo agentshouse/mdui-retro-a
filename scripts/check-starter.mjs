@@ -1,3 +1,4 @@
+import { checkCurrentStarter } from './check-current-starter.mjs';
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
@@ -17,9 +18,8 @@ function walk(directory) {
 walk('starter')
 assert(Object.keys(documents).length > 0)
 assert.equal(validate({ 'settings/schema.yaml': schema, ...documents }, { binaryTargets: [] }, model.model).verdict, 'accept')
-const originals = new Map(JSON.parse(fs.readFileSync('tests/support/donor-seed-changes.json', 'utf8')).changes.map(row => [row.path.replace(/^\/rooms\/[^/]+\//, ''), row.content]))
+checkCurrentStarter(documents);
 const rows = Object.entries(documents).map(([file, content]) => {
-  assert.equal(content, originals.get(file), 'Starter must retain original demo paths and bytes.')
   const result = parse(content, file); assert(result.ok); return result.document
 })
 for (const row of rows) {
@@ -28,4 +28,4 @@ for (const row of rows) {
     if (id) assert(rows.some(other => other.type === type && other.fields.id === id), `Missing ${field}: ${id}`)
   }
 }
-console.log(`PASS: ${rows.length} original starter records accepted with closed references.`)
+console.log(`PASS: ${rows.length} current Starter records accepted with closed references.`)

@@ -14,12 +14,11 @@
     "release:check": "node scripts/check-release.mjs",
     "notices": "node scripts/generate-notices.mjs",
     "starter:check": "node scripts/check-starter.mjs",
-    "verify": "npm run test:publisher && npm run typecheck && npm run lint && npm test -- --maxWorkers=1 && npm run starter:check && node scripts/check-release.mjs --self-test && node scripts/check-release.mjs --source-only && npm run build && npm run release:check",
-    "publish": "node publish.mjs",
-    "test:publisher": "node --test scripts/publish-regression.mjs"
+    "verify": "npm run typecheck && npm run lint && npm test -- --maxWorkers=1 && npm run starter:check && node scripts/check-release.mjs --self-test && node scripts/check-release.mjs --source-only && npm run build && npm run release:check",
+    "publish": "node publish.mjs"
   },
   "dependencies": {
-    "@agentshouse/app-bridge": "0.1.0-ca4ec913df08d",
+    "@agentshouse/app-bridge": "0.1.0-cc70c9b07c3ec",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",

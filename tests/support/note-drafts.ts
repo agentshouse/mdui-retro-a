@@ -25,7 +25,7 @@ export function boundary(){
       }),
       discard:vi.fn(),
     },
-    save:vi.fn(async(_room:string,entries:{path:string;revision:string}[])=>{for(const entry of entries){if(drafts.get(entry.path)?.revision!==entry.revision)return{outcome:'refused',rule:'stale'};drafts.delete(entry.path);}publish();return{outcome:'saved',identifier:'queued'};}),
+    save:vi.fn(async(_room:string,entries:{path:string;revision:string}[])=>{for(const entry of entries){if(drafts.get(entry.path)?.revision!==entry.revision)return{outcome:'refused',code:'stale', retryable: false};drafts.delete(entry.path);}publish();return{outcome:'saved',identifier:'queued'};}),
   };
   return{md:methods as unknown as HouseRuntime,methods,drafts,race:(run:()=>void)=>{race=run;},remote:(path:string,fields:NonNullable<Draft['parts']['fields']>)=>{const old=drafts.get(path)!;drafts.set(path,{...old,revision:`r${++revision}`,parts:{...old.parts,fields:{...old.parts.fields,...fields}}});publish();}};
 }

@@ -427,7 +427,7 @@ describe('drag snapshot persistence',()=>{
     const pending=mockRuntime({documents:withTargets,existingPath:target.path})
     await expect(groupNotes(pending.md,board,target,[note,child])).rejects.toThrow(/unfinished House draft/)
     expect(pending.write).not.toHaveBeenCalled()
-    const refused=mockRuntime({documents:withTargets,saveResult:{outcome:'refused',rule:'base-mismatch'}})
+    const refused=mockRuntime({documents:withTargets,saveResult:{outcome:'refused',code:'base-mismatch', retryable: false}})
     await expect(groupNotes(refused.md,board,target,[note,child])).rejects.toThrow(/base-mismatch.*drafts have been kept/)
     expect(refused.save).toHaveBeenCalledOnce()
     expect(refused.write).toHaveBeenCalledTimes(3)

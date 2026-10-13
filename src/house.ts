@@ -129,7 +129,7 @@ async function queueChanges(md: HouseRuntime, room: string, changes: Change[]): 
     drafts.push({ path: change.path, revision: written.roomDraft.revision })
   }
   const saved = await md.save(room, drafts)
-  if (saved.outcome !== 'saved') refused(`House did not queue this change: ${saved.rule}. Your Room drafts have been kept.`, saved)
+  if (saved.outcome !== 'saved') refused(`House did not queue this change: ${saved.code}. Your Room drafts have been kept.`, saved)
   return { outcome: 'queued', identifier: saved.identifier }
 }
 function identity(prefix: string): string { return `${prefix}-${crypto.randomUUID()}` }
@@ -498,7 +498,7 @@ export async function openNoteDraft(md: HouseRuntime, board: Board, target: {col
         validateNote(modelFields({room: board.room, path, fields: creation.fields}));
       }
       const result = await md.save(board.room, [{path, revision: latest.revision}]);
-      if (result.outcome !== 'saved') throw new Error(`House did not queue the note: ${result.rule}. Its Room Draft is kept.`);
+      if (result.outcome !== 'saved') throw new Error(`House did not queue the note: ${result.code}. Its Room Draft is kept.`);
       return {outcome: 'queued', identifier: result.identifier};
     },
   };
